@@ -5,7 +5,7 @@ A simple state machine for entities, makes managing entities with many behaviors
 ## To Use
 Once you require the plugin, mix it into the entity class you want to have state machines
 
-`EntityMyEntity.inject(MixinStateMachine);
+`EntityMyEntity.inject(MixinStateMachine);`
 
 After that, the entity type will gain these functions, configs and properties:
 
