@@ -33,6 +33,7 @@ Not all of my plugins are mixins, check each plugin's README for details.
 
 ## Plugins overview
 
-* edges -- adds `top`, `bottom`, `left` and `right` properties to an entity
-* observable -- gives all Impact classes the ability to fire and listen to events
+* **clear-map-tiles**: deletes the tile at the specified location in a map
+* **edges**: -- adds `top`, `bottom`, `left` and `right` properties to an entity
+* **observable**: -- gives all Impact classes the ability to fire and listen to events
 
