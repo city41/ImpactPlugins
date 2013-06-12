@@ -1,4 +1,13 @@
 ig.module('plugins.clickable').defines(function() {
+	var clickables = [];
+
+	function anyClickablesInFocus() {
+		for(var i = 0;i < clickables.length; ++i) {
+			if(clickables[i].inMouseFocus()) {
+				return true;
+			}
+		}
+	}
 
 	MixinClickable = {
 
@@ -11,6 +20,8 @@ ig.module('plugins.clickable').defines(function() {
 				ig.system.canvas.addEventListener('click', this._clickable_onCanvasClick.bind(this));
 				ig.system.canvas.addEventListener('mousemove', this._clickable_onMouseMove.bind(this));
 			}
+
+			clickables.push(this);
 		},
 
 		_clickable_onCanvasClick: function() {
@@ -20,7 +31,7 @@ ig.module('plugins.clickable').defines(function() {
 		},
 
 		_clickable_onMouseMove: function() {
-			var cursor = this.inMouseFocus() ? 'pointer' : '';
+			var cursor = anyClickablesInFocus() ? 'pointer' : '';
 
 			ig.system.canvas.style.cursor = cursor;
 		},
