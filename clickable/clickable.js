@@ -1,4 +1,5 @@
 ig.module('plugins.clickable').defines(function() {
+	var mouseMoveHookedUp = false;
 	var clickables = [];
 
 	function anyClickablesInFocus() {
@@ -7,6 +8,11 @@ ig.module('plugins.clickable').defines(function() {
 				return true;
 			}
 		}
+	}
+
+	function onMouseMove() {
+		var cursor = anyClickablesInFocus() ? 'pointer' : '';
+		ig.system.canvas.style.cursor = cursor;
 	}
 
 	MixinClickable = {
@@ -18,7 +24,11 @@ ig.module('plugins.clickable').defines(function() {
 
 			if(!window.wm) {
 				ig.system.canvas.addEventListener('click', this._clickable_onCanvasClick.bind(this));
-				ig.system.canvas.addEventListener('mousemove', this._clickable_onMouseMove.bind(this));
+
+				if(!mouseMoveHookedUp) {
+					ig.system.canvas.addEventListener('mousemove', onMouseMove);
+					mouseMoveHookedUp = true;
+				}
 			}
 
 			clickables.push(this);
@@ -28,12 +38,6 @@ ig.module('plugins.clickable').defines(function() {
 			if(this.inMouseFocus() && typeof this.onClick === 'function') {
 				this.onClick();
 			}
-		},
-
-		_clickable_onMouseMove: function() {
-			var cursor = anyClickablesInFocus() ? 'pointer' : '';
-
-			ig.system.canvas.style.cursor = cursor;
 		},
 
 		inMouseFocus: function() {
