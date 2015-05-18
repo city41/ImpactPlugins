@@ -24,6 +24,7 @@ ig.module('plugins.clickable').defines(function() {
 
 			if(!window.wm) {
 				ig.system.canvas.addEventListener('click', this._clickable_onCanvasClick.bind(this));
+				ig.system.canvas.addEventListener('touchend', this._clickable_onCanvasClick.bind(this));
 
 				if(!mouseMoveHookedUp) {
 					ig.system.canvas.addEventListener('mousemove', onMouseMove);
