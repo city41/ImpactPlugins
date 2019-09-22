@@ -29,7 +29,8 @@ EntityFadesIn = ig.Entity.extend({
 EntityFadesIn.inject(MixinFadeEntity);
 ```
 
-Defe an entity that fades in for 1 second, hangs around fully opaque for 5 seconds, then fades out in 4 seconds
+Define an entity that fades in for 1 second, hangs around fully opaque for 5 seconds, then fades out in 4 seconds
+
 ```
 EntityFadesInAndOut = ig.Entity.extend({
 	fadeInDuration: 1,
