@@ -1,4 +1,4 @@
-#Clear Map Tiles
+# Clear Map Tiles
 
 Lets you clear out a position on a background map, whether it is prerendered or not. 
 
